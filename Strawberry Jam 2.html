@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<head>
+<title></title>
+<link rel="icon" href="images/Strawberries.png" />
+<style>
+
+
+#Home {}
+#Music {display: none;}
+#Members {display: none;}
+#Story {display: none;}
+#Calendar {display: none;}
+#Contact {display: none;}
+
+
+* {margin: 0; padding: 0;}
+body {background: url(images/background.png) no-repeat center center fixed; background-size: cover;}
+
+#container {margin: 0 auto; margin-top: 60px; margin-bottom: 100px; width: 65%; font-family: Tahoma, Geneva, sans-serif; color: #662020;}
+
+#header {background: url(images/header.png)no-repeat; background-size: 100%; 
+width: 100%; padding-top: 17.65%; position: relative; opacity: 0.8; border-radius: 5px;}
+
+#linkdiv {position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background-color: transparent;}
+#secret {position: absolute; top: 0px; left: 0px; width: 5px; height: 5px; background-color: transparent;}
+
+#navbar {width: 100%; height: 40px; font-size: 20px; text-align: center;}
+#navbar ul {list-style-type: none; padding-top: 7px;}
+#navbar ul li {display: inline-block; width: 14.286%;}
+
+#main {background-color: #CC4040; border-radius: 5px; opacity: 0.8; text-align: center; 
+padding-left: 10%; padding-right: 10%; padding-bottom: 30px;}
+ol {list-style-position: inside;}
+
+#box {position: fixed; width: 10%; margin-left: 86.5%; background-color: #CC4040; opacity: 0.8; 
+border-radius: 5px; padding-bottom: 0.5%;}
+#box p {padding: 5%}
+#box ul {list-style-type: none; width: 100%;}
+#box ul li {display: inline-block;}
+
+#navbar a {color: #FFCC99; text-decoration: none;}
+#navbar a:hover {color: #FFCC99; font-weight: bold;}
+#navbar a:active {color: #FFCC99;}
+#navbar a:visited {color: #FFCC99;}
+#navbar a::after {
+    display: block;
+    content: attr(title);
+    font-weight: bold;
+    height: 1px;
+    color: transparent;
+    overflow: hidden;
+    visibility: hidden;
+    margin-bottom: -1px;}
+
+#main a {color: #662020; text-decoration: none; padding-left: 10px; padding-right: 10px;}
+#main a:hover {color: #662020; border-bottom: 1px dashed #662020; padding-bottom: 2px;
+	border-top: 1px dashed #662020;}
+#main a:active {color: #662020;}
+#main a:visited {color: #662020;}
+
+hr {margin-top: 10px; margin-bottom: 10px; border: 2px dashed #CC4040; width: 50%; margin-left: 25%;}
+
+
+#info-left {float: left; width: 45%; border: 3px dotted #662020; text-align: left; margin-right: 10px; 
+font-size: 15px;}
+#info-right {float: right; width: 45%; border: 3px dotted #662020; text-align: left; margin-left: 10px; 
+font-size: 15px;}
+#info-left p {margin-left: 3%; margin-right: 3%;}
+#info-right p {margin-left: 3%; margin-right: 3%;}
+
+#bio {text-align: justified;}
+
+#deck {overflow:hidden; height: 400px;}
+#deck img {width: 100%; height:400px}
+#deck ul {list-style-type: none; display: block;}
+#deck ul li {position: absolute; float: left;}
+#deck ul li:hover {z-index: 9999;}
+#deck ul li a:hover {padding: 0; border: 0;}
+
+
+.month {width: 100%; overflow: hidden; border-radius: 5px;}
+.head {background-color: #FFCC99; padding-top: 6%; padding-bottom: 6%; font-size: 30px; 
+border-radius: 5px 5px 0 0;}
+.weekdays {}
+.weekdays ul {list-style-type: none; width: 100%; background-color: #FFCC99; opacity: .8;}
+.weekdays ul li {display: inline-block; width: 13.6%; padding: 2% 0;}
+.days {border-bottom-radius: 5px;}
+.days ul {list-style-type: none; width: 100%; background-color: #FFCC99;}
+.days ul li {display: inline-table; width: 13.6%; padding-bottom: 10px;}
+.days ul li span {font-size: 10px;}
+
+#october2016 {display: none;}
+#november2016 {display: none;}
+
+.hover:hover {border-bottom: 1px dashed #662020; padding-bottom: 2px;
+	border-top: 1px dashed #662020;}
+
+</style>
+</head>
+<body>
+
+      <!--MUSIC PLAYER-->
+<div id="box">
+<span style="font-size: 36px; text-align: center;">
+<ul>
+<li><span onclick="previousSong()">&#8610;</span></li>
+<li><span id="playButton" onclick="playPause()">&#8853;</span></li>
+<li><span onclick="nextSong()">&#8611;</span></li>
+</ul>
+</span>
+<marquee id="marquee" style="background-color: #FFCC99; opacity: 0.6; margin-top: -4px; line-height: 150%;">
+Paused
+</marquee>
+</div>
+
+<div id="container">
+
+<div id="header">
+<a id="linkdiv" href="#" onclick="toHome()" style=""></a>
+<a id="secret" href="http://www.space.com/" style=""></a>
+</div>
+
+<div id="navbar">
+<ul>
+<li><a href="#" onclick="toHome()">Home</a></li>
+<li><a href="#" onclick="toMusic()">Music</a></li>
+<li><a href="#" onclick="toMembers()">Members</a></li>
+<li><a href="#" onclick="toStory()">Story</a></li>
+<li><a href="#" onclick="toCalendar()">Calendar</a></li>
+<li><a href="#" onclick="toContact()">Contact</a></li>
+</ul>
+</div>
+
+      <!--HOME--><div id="Home">
+<div id="main">
+<p style="font-size: 150%; padding-top: 15px; padding-bottom: 12px;">Header</p>
+<p>
+
+Strawberry Jam is a group of musical friends based in Ankeny, Iowa. Our music can be generally described 
+as "thought-provoking," "interesting," and sometimes terrible, although we do have a growing amount of 
+original songs on this site alongside our covers. The band can oftentimes be found performing around the 
+countryside or, alternatively, at AHS open mic nights. To see currently scheduled events, see our 
+calendar. Feel free to also contact us to schedule an event or just say hi and proclaim your undying 
+allegiance to our legion.
+
+<hr color="#FFCC99" />
+<video style="width: 70%;" src="videos/interview.mov" controls></video>
+<hr color="#FFCC99" />
+
+Strawberry Jam originated as a 10th grade web development assignment. When faced with the indecision over 
+created a website about "anything," the creator decided to bring Strawberry Jam into being. The Mk. 1 website 
+contained an extensive amount of unofficial members, who proved to be highly disposible in the long run. 
+After the events of the War, when the ranks of Strawberry Jam experienced great dissension over how to live, 
+the remaining members were coalesced here on the Mk. 2 website. These remaining members came together once 
+more to play music, now much more effectively.
+<br /><br />
+Please enjoy your stay.
+</p>
+</div>
+      </div>
+
+      <!--MUSIC--><div id="Music">
+<div id="main">
+<p style="font-size: 150%; padding-top: 15px; padding-bottom: 12px;">Music</p>
+<img src="images/dummyalbum.png" style="width: 40%;" />
+<p style="font-size: 20px;">Album 4: The Album</p>
+<br />
+<ol>
+<li>Song 1</li>
+<li>Song 1</li>
+<li>Song 1</li>
+<li>Song 1</li>
+<li>Song 1</li>
+</ol>
+<hr color="#FFCC99" />
+<img src="images/dummyalbum.png" style="width: 40%;" />
+<p style="font-size: 20px;">Album 3: The Album</p>
+<br />
+<ol>
+<li>Song 1</li>
+<li>Song 1</li>
+<li>Song 1</li>
+<li>Song 1</li>
+<li>Song 1</li>
+</ol>
+<hr color="#FFCC99" />
+<img src="images/dummyalbum.png" style="width: 40%;" />
+<p style="font-size: 20px;">Album 2: The Album</p>
+<br />
+<ol>
+<li>Song 1</li>
+<li>Song 1</li>
+<li>Song 1</li>
+<li>Song 1</li>
+<li>Song 1</li>
+</ol>
+<hr color="#FFCC99" />
+<img src="images/album1.png" style="width: 40%; border: 9px double #FFCC99; opacity: 1.2;" />
+<p style="font-size: 20px;">Album 1: The Album</p>
+<br />
+<ol>
+<li><a href="#">Cat Sandwich</a><a href="#">[video]</a></li>
+<li>Song 1</li>
+<li>Song 1</li>
+<li>Song 1</li>
+<li>Song 1</li>
+</ol>
+</div>
+      </div>
+
+      <!--MEMBERS--><div id="Members">
+<div id="main">
+<p style="font-size: 150%; padding-top: 15px; padding-bottom: 12px;">Members</p>
+
+<hr color="#FFCC99" />
+<p>
+<div id="deck" style="margin-left: -5%;">
+<ul>
+<li style= "width: 56%;"><a href="#1"><img src="images/band.jpeg" style="height: 400px;" alt="foundthisonline" /></a></li>
+<li style="margin-left: 5%; width: 51%;"><a href="#2"><img src="images/guitar.jpg" style="height: 400px; width: 100%;" alt="guitar" /></a></li>
+<li style="margin-left: 10%; width: 46%;"><a href="#3"><img src="images/kneecaps.png" style="height: 400px; width: 100%;" alt="ow" /></a></li>
+<li style="margin-left: 15%; width: 41%;"><a href="#4"><img src="images/octopus.jpg" style="height: 400px; width: 100%;" alt="squishy" /></a></li>
+<li style="margin-left: 20%; width: 36%;"><a href="#5"><img src="images/jam.jpg" style="height: 400px; width: 100%;" alt="jaaam" /></a></li>
+<li style="margin-left: 25%; width: 32%;"><img src="images/card.png" style="height: 400px; width: 100%;" alt="card" /></li>
+</ul>
+</div>
+</p>
+<hr color="#FFCC99" />
+<p id="1" style="font-size: 20px;">Me</p>
+<img src="images/me.png" style="width: 30%;" />
+<br /><br />
+
+<div id="bio">
+
+<div id="info-left">
+<p style="padding-left: 15%;">Me</p>
+<p><b>Birthday:</b> September 26</p>
+<p><b>Age:</b> 18</p>
+<p><b>Height:</b> 5'1 1/2</p>
+<p><b>Favorite Sandwich:</b> Turkey w/ Colby Cheese</p>
+<p style="padding-bottom: 3px;"><b>Plays:</b> Guitar</p>
+</div>
+
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc gravida ullamcorper orci, sed dictum 
+felis dignissim ut. Sed augue tellus, pulvinar id pellentesque nec, molestie vitae nisi. Quisque 
+fringilla malesuada ante, vitae dictum lacus pharetra fermentum. In tellus tortor, rutrum ut magna 
+sit amet, auctor eleifend tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla turpis 
+lorem, euismod at fringilla eget, tincidunt eget purus. Phasellus hendrerit ultricies efficitur. Ut 
+eleifend fringilla lorem, eget euismod magna consectetur vitae. Ut vulputate lorem ac nunc gravida, sed 
+euismod ligula pellentesque. Sed eu faucibus nisl. Integer et felis maximus, fermentum nisl nec, 
+tempus magna. Sed nec lectus metus. Morbi augue est, consectetur non elementum quis, interdum eu sem. 
+Nulla tincidunt nec purus quis faucibus. Nullam lacus massa, viverra vel nisl quis, sodales sollicitudin orci.
+</p>
+</div>
+
+<br />
+<hr color="#FFCC99" />
+<p id="2" style="font-size: 20px;">Ian Zwaschka</p>
+<img src="images/ian.png" style="width: 30%;" />
+<br /><br />
+
+<div id="bio">
+
+<div id="info-right">
+<p style="padding-left: 15%;">Eeeeaaaan</p>
+<p><b>Birthday:</b> IDK</p>
+<p><b>Age:</b> 17</p>
+<p><b>Height:</b> 6'1 or something</p>
+<p><b>Favorite Something:</b> Good question.</p>
+<p style="padding-bottom: 3px;"><b>Plays:</b> Bass</p>
+</div>
+
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc gravida ullamcorper orci, sed dictum 
+felis dignissim ut. Sed augue tellus, pulvinar id pellentesque nec, molestie vitae nisi. Quisque 
+fringilla malesuada ante, vitae dictum lacus pharetra fermentum. In tellus tortor, rutrum ut magna 
+sit amet, auctor eleifend tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla turpis 
+lorem, euismod at fringilla eget, tincidunt eget purus. Phasellus hendrerit ultricies efficitur. Ut 
+eleifend fringilla lorem, eget euismod magna consectetur vitae. Ut vulputate lorem ac nunc gravida, sed 
+euismod ligula pellentesque. Sed eu faucibus nisl. Integer et felis maximus, fermentum nisl nec, 
+tempus magna. Sed nec lectus metus. Morbi augue est, consectetur non elementum quis, interdum eu sem. 
+Nulla tincidunt nec purus quis faucibus. Nullam lacus massa, viverra vel nisl quis, sodales sollicitudin orci.
+</p>
+</div>
+
+<br />
+<hr color="#FFCC99" />
+<p id="3" style="font-size: 20px;">Nicole</p>
+<img src="images/cole.jpg" style="width: 30%;" />
+<br /><br />
+
+<div id="bio">
+
+<div id="info-left">
+<p style="padding-left: 15%;">'Cole</p>
+<p><b>Birthday:</b> November 2</p>
+<p><b>Age:</b> 17</p>
+<p><b>Height:</b> 5'6</p>
+<p><b>Favorite Member of the Band:</b> Ian's Hair </p>
+<p style="padding-bottom: 3px;"><b>Plays:</b> Vocals</p>
+</div>
+
+<p>
+Cole was born in a small Russian village in the depths of Siberia, where she grew up fighting bears and Germans.
+ During the cold, harsh winters of Siberia, it was music--and vodka--that kept her warm and in good spirits. 
+At the tender age of eleven, Cole packed her bags and said farewell to her guardian Yeti to barefoot travel to America,
+ where she drank her way to rock bottom. There, she met the other founding members of Strawberry Jam and the bonds 
+of everlasting friendship were born.
+</p>
+</div>
+
+<br />
+<hr color="#FFCC99" />
+<p id="4" style="font-size: 20px;">Zach</p>
+<img src="images/zach.png" style="width: 30%;" />
+<br /><br />
+
+<div id="bio">
+
+<div id="info-right">
+<p style="padding-left: 15%;">Me</p>
+<p><b>Birthday:</b> April 7</p>
+<p><b>Age:</b> 17</p>
+<p><b>Height:</b> 5'11</p>
+<p><b>Favorite Movie:</b> Hmm...</p>
+<p style="padding-bottom: 3px;"><b>Plays:</b> Moral support</p>
+</div>
+
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc gravida ullamcorper orci, sed dictum 
+felis dignissim ut. Sed augue tellus, pulvinar id pellentesque nec, molestie vitae nisi. Quisque 
+fringilla malesuada ante, vitae dictum lacus pharetra fermentum. In tellus tortor, rutrum ut magna 
+sit amet, auctor eleifend tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla turpis 
+lorem, euismod at fringilla eget, tincidunt eget purus. Phasellus hendrerit ultricies efficitur. Ut 
+eleifend fringilla lorem, eget euismod magna consectetur vitae. Ut vulputate lorem ac nunc gravida, sed 
+euismod ligula pellentesque. Sed eu faucibus nisl. Integer et felis maximus, fermentum nisl nec, 
+tempus magna. Sed nec lectus metus. Morbi augue est, consectetur non elementum quis, interdum eu sem. 
+Nulla tincidunt nec purus quis faucibus. Nullam lacus massa, viverra vel nisl quis, sodales sollicitudin orci.
+</p>
+</div>
+
+<br />
+<hr color="#FFCC99" />
+<p id="5" style="font-size: 20px;">Person 5</p>
+<br /><br />
+
+<div id="bio">
+
+<div id="info-left">
+<p style="padding-left: 15%;">Me</p>
+<p><b>Birthday:</b> January 1</p>
+<p><b>Age:</b> 12</p>
+<p><b>Height:</b> 8'2</p>
+<p><b>Favorite...:</b> Something</p>
+<p style="padding-bottom: 3px;"><b>Plays:</b> Instrument</p>
+</div>
+
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc gravida ullamcorper orci, sed dictum 
+felis dignissim ut. Sed augue tellus, pulvinar id pellentesque nec, molestie vitae nisi. Quisque 
+fringilla malesuada ante, vitae dictum lacus pharetra fermentum. In tellus tortor, rutrum ut magna 
+sit amet, auctor eleifend tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla turpis 
+lorem, euismod at fringilla eget, tincidunt eget purus. Phasellus hendrerit ultricies efficitur. Ut 
+eleifend fringilla lorem, eget euismod magna consectetur vitae. Ut vulputate lorem ac nunc gravida, sed 
+euismod ligula pellentesque. Sed eu faucibus nisl. Integer et felis maximus, fermentum nisl nec, 
+tempus magna. Sed nec lectus metus. Morbi augue est, consectetur non elementum quis, interdum eu sem. 
+Nulla tincidunt nec purus quis faucibus. Nullam lacus massa, viverra vel nisl quis, sodales sollicitudin orci.
+</p>
+</div>
+</div>
+      </div>
+
+      <!--STORY--><div id="Story">
+<div id="main"
+<p style="font-size: 150%; padding-top: 15px; padding-bottom: 12px;">The Story So Far...</p>
+<hr color="#FFCC99" />
+<br />
+</div>
+      </div>
+
+      <!--CALENDAR--><div id="Calendar">
+<div id="main">
+<p style="font-size: 150%; padding-top: 15px; padding-bottom: 12px;">Calendar</p>
+
+<noscript>
+<p>Sorry, it doesn't look like you have Java enabled! To see the full calendar, please enable Javascript.</p>
+<br />
+</noscript>
+
+<!--SEPTEMBER-->
+<div class="month" id="september2016">
+
+<div class="head">
+<p style="float: left; padding-left: 5%;"><span class="hover"> < </span></p>
+<p style="text-align: center; float: left; padding-left: 33%;">September</p>
+<p style="padding-right: 5%; text-align: right;" onclick="septoct2016()"><span class="hover"> > </span></p>
+</div>
+<div class="weekdays">
+<ul>
+<li>Sun.</li>
+<li>Mon.</li>
+<li>Tues.</li>
+<li>Wed.</li>
+<li>Thurs.</li>
+<li>Fri.</li>
+<li>Sat.</li>
+</ul>
+</div>
+<div class="days">
+<ul>
+<li style="padding-top: 1%;">-</li>
+<li>-</li>
+<li>-</li>
+<li>-</li>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li><span>Event</span></li>
+<li></li>
+<li></li>
+
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+
+<li></li>
+<li><span>Event</span></li>
+<li></li>
+<li></li>
+<li><span>Event</span></li>
+<li></li>
+<li></li>
+
+<li>11</li>
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+<li>16</li>
+<li>17</li>
+
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li><span>Event</span></li>
+<li></li>
+<li><span>Event</span></li>
+
+<li>18</li>
+<li>19</li>
+<li>20</li>
+<li>21</li>
+<li>22</li>
+<li>23</li>
+<li>24</li>
+
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li><span>Event</span></li>
+<li><span>Event</span></li>
+
+<li>25</li>
+<li>26</li>
+<li>27</li>
+<li>28</li>
+<li>29</li>
+<li>30</li>
+<li>-</li>
+
+<li></li>
+<li></li>
+<li><span>Event</span></li>
+<li></li>
+<li><span>Event and event information here</span></li>
+<li></li>
+<li></li>
+</ul>
+</div>
+</div>
+
+<!--OCTOBER-->
+<div class="month" id="october2016">
+
+<div class="head">
+<p style="float: left; padding-left: 5%;" onclick="octsept2016()"><span class="hover"> < </span></p>
+<p style="text-align: center; float: left; padding-left: 35%;">October</p>
+<p style="padding-right: 5%; text-align: right;" onclick="octnov2016()"><span class="hover"> > </span></p>
+</div>
+<div class="weekdays">
+<ul>
+<li>Sun.</li>
+<li>Mon.</li>
+<li>Tues.</li>
+<li>Wed.</li>
+<li>Thurs.</li>
+<li>Fri.</li>
+<li>Sat.</li>
+</ul>
+</div>
+<div class="days">
+<ul>
+<li style="padding-top: 1%;">-</li>
+<li>-</li>
+<li>-</li>
+<li>-</li>
+<li>-</li>
+<li>-</li>
+<li>1</li>
+
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li><span>Event</span></li>
+<li></li>
+<li></li>
+
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+
+<li></li>
+<li><span>Event</span></li>
+<li></li>
+<li></li>
+<li><span>Event</span></li>
+<li></li>
+<li></li>
+
+<li>9</li>
+<li>10</li>
+<li>11</li>
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li><span>Event</span></li>
+<li></li>
+<li><span>Event</span></li>
+
+<li>16</li>
+<li>17</li>
+<li>18</li>
+<li>19</li>
+<li>20</li>
+<li>21</li>
+<li>22</li>
+
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li><span>Event</span></li>
+<li><span>Event</span></li>
+
+<li>23</li>
+<li>24</li>
+<li>25</li>
+<li>26</li>
+<li>27</li>
+<li>28</li>
+<li>29</li>
+
+<li></li>
+<li></li>
+<li><span>Event</span></li>
+<li></li>
+<li><span>Event and event information here</span></li>
+<li></li>
+<li></li>
+
+<li>30</li>
+<li>31</li>
+<li>-</li>
+<li>-</li>
+<li>-</li>
+<li>-</li>
+<li>-</li>
+
+<li></li>
+<li></li>
+<li><span>Event</span></li>
+<li></li>
+<li><span>Event and event information here</span></li>
+<li></li>
+<li></li>
+</ul>
+</div>
+</div>
+
+<!--NOVEMBER-->
+<div class="month" id="november2016">
+
+<div class="head">
+<p style="float: left; padding-left: 5%;" onclick="novoct2016()"><span class="hover"> < </span></p>
+<p style="text-align: center; float: left; padding-left: 33%;">November</p>
+<p style="padding-right: 5%; text-align: right;" onclick="novdec2016()"><span class="hover"> > </span></p>
+</div>
+<div class="weekdays">
+<ul>
+<li>Sun.</li>
+<li>Mon.</li>
+<li>Tues.</li>
+<li>Wed.</li>
+<li>Thurs.</li>
+<li>Fri.</li>
+<li>Sat.</li>
+</ul>
+</div>
+<div class="days">
+<ul>
+<li style="padding-top: 1%;">-</li>
+<li>-</li>
+<li>-</li>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li><span>Event</span></li>
+<li></li>
+<li></li>
+
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<li>8</li>
+<li>9</li>
+<li>10</li>
+<li>11</li>
+
+<li></li>
+<li><span>Event</span></li>
+<li></li>
+<li></li>
+<li><span>Event</span></li>
+<li></li>
+<li></li>
+
+<li>12</li>
+<li>13</li>
+<li>14</li>
+<li>15</li>
+<li>16</li>
+<li>17</li>
+<li>18</li>
+
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li><span>Event</span></li>
+<li></li>
+<li><span>Event</span></li>
+
+<li>19</li>
+<li>20</li>
+<li>21</li>
+<li>22</li>
+<li>23</li>
+<li>24</li>
+<li>25</li>
+
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li><span>Event</span></li>
+<li><span>Event</span></li>
+
+<li>26</li>
+<li>27</li>
+<li>28</li>
+<li>29</li>
+<li>30</li>
+<li>-</li>
+<li>-</li>
+
+<li></li>
+<li></li>
+<li><span>Event</span></li>
+<li></li>
+<li><span>Event and event information here</span></li>
+<li></li>
+<li></li>
+</ul>
+</div>
+</div>
+
+</div>
+    </div>
+
+      <!--CONTACT--><div id="Contact">
+<div id="main">
+<p style="font-size: 150%; padding-top: 15px; padding-bottom: 12px;">Contact Us</p>
+<hr color="#FFCC99" />
+</div>
+      </div>
+
+</div>
+
+
+      <!--SCRIPT-->
+<script>
+var current = "Home";
+
+function toHome() {
+    document.getElementById(current).style.display = "none";
+    document.getElementById("Home").style.display = "inline";
+    current = "Home";
+}
+
+function toMusic() {
+    document.getElementById(current).style.display = "none";
+    document.getElementById("Music").style.display = "inline";
+    current = "Music";
+}
+
+function toMembers() {
+    document.getElementById(current).style.display = "none";
+    document.getElementById("Members").style.display = "inline";
+    current = "Members";
+}
+
+function toStory() {
+    document.getElementById(current).style.display = "none";
+    document.getElementById("Story").style.display = "inline";
+    current = "Story";
+}
+
+function toCalendar() {
+    document.getElementById(current).style.display = "none";
+    document.getElementById("Calendar").style.display = "inline";
+    document.getElementById("september2016").style.display = "inline";
+    current = "Calendar";
+}
+
+function toContact() {
+    document.getElementById(current).style.display = "none";
+    document.getElementById("Contact").style.display = "inline";
+    current = "Contact";
+}
+
+
+
+function septoct2016() 
+{document.getElementById("september2016").style.display = "none";
+document.getElementById("october2016").style.display = "inline";}
+
+function octsept2016() {
+	document.getElementById("october2016").style.display = "none";
+	document.getElementById("september2016").style.display = "inline";
+}
+function octnov2016() {
+	document.getElementById("october2016").style.display = "none";
+	document.getElementById("november2016").style.display = "inline";
+}
+function novoct2016() {
+	document.getElementById("november2016").style.display = "none";
+	document.getElementById("october2016").style.display = "inline";
+}
+
+function back() 
+{}
+
+function next() 
+{}
+
+var songs = ["videos/ELO - Don't Bring Me Down.mid",
+    "videos/Yes Sir Boss - You and Me.mp3", 
+    "videos/Cosmo Sheldrake - Solar.mp3", 
+    "videos/Cosmo Sheldrake - Tardigrade Song.mp3", 
+    "videos/Franz Ferdinand - Stand on the Horizon.mp3"];
+var songText = ["ELO - Don't Bring Me Down",
+    "Yes Sir Boss - You and Me", 
+    "Cosmo Sheldrake - Solar", 
+    "Cosmo Sheldrake - Tardigrade Song",
+    "Franz Ferdinand - Stand on the Horizon"];
+var i = 0;
+var audio = new Audio(songs[i]);
+var songsL = songs.length - 1;
+
+function nextSong() {
+    audio.pause();
+    if (i < songsL) {
+      i++;
+    } else {
+      i = 0;
+    }
+    audio = new Audio(songs[i]);
+    document.getElementById("marquee").innerHTML = songText[i];
+    audio.play();
+}
+
+function previousSong() {
+    audio.pause();
+    if (i > 0) {
+      i--;
+    } else {
+      i = songsL;
+    }
+    audio = new Audio(songs[i]);
+    document.getElementById("marquee").innerHTML = songText[i];
+    audio.play();
+}
+
+function playPause() {
+    if (audio.paused == false) {
+      audio.pause();
+      document.getElementById("playButton").innerHTML = "\u2295";
+      document.getElementById("marquee").innerHTML = "Paused";
+    } else {
+      audio.play();
+      document.getElementById("playButton").innerHTML = "\u2297";
+      document.getElementById("marquee").innerHTML = songText[i];
+    }
+}
+
+</script>
+
+</body>
+</html>
